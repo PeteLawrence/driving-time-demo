@@ -1,5 +1,8 @@
 jQuery(document).ready(function() {
 
+  /*
+   * Handles the clicking off the 'Find Driving Time' button
+   */
   jQuery('#drivingTimeSubmit').click(function() {
     var origin = jQuery('#drivingTimeOrigin').val();
     var destination = jQuery('#drivingTimeDestination').val();
@@ -15,9 +18,9 @@ jQuery(document).ready(function() {
         durationInTraffic: false,
         avoidHighways: false,
         avoidTolls: false
-      }, distanceMatricCallback);
+      }, distanceMatrixCallback);
 
-    function distanceMatricCallback(response, status) {
+    function distanceMatrixCallback(response, status) {
       if (status == google.maps.DistanceMatrixStatus.OK) {
         var origins = response.originAddresses;
         var destinations = response.destinationAddresses;
@@ -43,6 +46,10 @@ jQuery(document).ready(function() {
 
   });
 
+
+  /*
+   * Handles the clicking off the 'Use Current Location' button
+   */
   jQuery('#drivingTimeUseCurrentLocation').click(function() {
     if (jQuery('#drivingTimeOrigin').attr('readonly')) {
       jQuery('#drivingTimeOrigin').val('');
@@ -57,17 +64,29 @@ jQuery(document).ready(function() {
     }
   });
 
+
+  /**
+   * Geolocation success callback
+   *
+   * @link http://dev.w3.org/geo/api/spec-source.html#api_description
+   */
   function locationCallbackSuccess(position) {
     jQuery('#drivingTimeSpinner').hide();
     jQuery('#drivingTimeOrigin').val(position.coords.latitude + ', ' + position.coords.longitude);
   }
 
+
+  /**
+   * Geolocation failure callback
+   *
+   * @link http://dev.w3.org/geo/api/spec-source.html#api_description
+   */
   function locationCallbackFailure(error) {
     jQuery('#drivingTimeSpinner').hide();
     if (err.code == 1) {
       //user didn't give permission
     } else {
-      //couldn;t establish location
+      //couldn't establish location
     }
   }
 });
