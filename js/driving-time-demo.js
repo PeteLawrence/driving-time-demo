@@ -38,7 +38,7 @@ jQuery(document).ready(function() {
           var results = response.rows[i].elements;
           for (var j = 0; j < results.length; j++) {
             var element = results[j];
-            jQuery('h1').after('<div class="alert alert-info" role="alert">' + element.duration.text + '</div>');
+            jQuery('h1').after('<div class="alert alert-info" role="alert">' + origins[0] + ' to ' + destinations[0] + ': ' + element.duration.text + '</div>');
           }
         }
       } else {
