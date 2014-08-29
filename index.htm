@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+
+    <style>
+    @-moz-keyframes spin { 100% { -moz-transform: rotate(360deg); } }
+    @-webkit-keyframes spin { 100% { -webkit-transform: rotate(360deg); } }
+    @keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }
+
+    .spinner {
+      -webkit-animation: spin 1s infinite steps(7);
+      -moz-animation: spin 1s infinite steps(7);
+      -o-animation: spin 1s infinite steps(7);
+      animation: spin 1s infinite steps(7);
+    }
+    </style>
+    <title>Driving Time Demo</title>
+</head>
+
+<body>
+
+    <div class="container">
+        <h1>Driving Time Demo</h1>
+
+        <form role="form">
+
+            <div class="form-group">
+                <label for="drivingTimeOrigin">Origin</label>
+                <input type="text" class="form-control" id="drivingTimeOrigin" placeholder="Origin" value="NR104JN">
+
+                <input type="checkbox" id="drivingTimeUseCurrentLocation"> Use my current location <span id="drivingTimeSpinner" class="glyphicon glyphicon-refresh spinner" style="display: none;"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="drivingTimeOrigin">Destination</label>
+                <input type="text" class="form-control" id="drivingTimeDestination" placeholder="Destination" value="NR128XP">
+            </div>
+
+            <input type="button" id="drivingTimeSubmit" value="Find Driving Time">
+        </form>
+
+    </div>
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script type="text/javascript" src="//maps.googleapis.com/maps/api/js?sensor=false"></script>
+    <script type="text/javascript" src="js/driving-time-demo.js"></script>
+</body>
+
+</html>
