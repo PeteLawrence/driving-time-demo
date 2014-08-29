@@ -26,8 +26,11 @@ jQuery(document).ready(function() {
         var destinations = response.destinationAddresses;
 
         //Check that the origin was recognised
-        if (response.originAddresses[0]== "") {
+        if (response.rows[0].elements[0].status == "NOT_FOUND") {
           jQuery('h1').after('<div class="alert alert-warning" role="alert">Your location was not recognised</div>');
+          return;
+        } else if (response.rows[0].elements[0].status == "ZERO_RESULTS") {
+          jQuery('h1').after('<div class="alert alert-warning" role="alert">We could not find the driving time based on your location</div>');
           return;
         }
 
